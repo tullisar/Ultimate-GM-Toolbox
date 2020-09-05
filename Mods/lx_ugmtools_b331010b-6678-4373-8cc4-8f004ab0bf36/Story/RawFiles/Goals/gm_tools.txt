@@ -80,32 +80,32 @@ ApplyStatus(_Char, "GM_TARGETED", -1.0, 1);
 
 
 // Processing
-IF
-StoryEvent((CHARACTERGUID)_Char, "GM_Select")
-AND
-DB_Select_Activated_Only(_Lock)
-AND
-HasActiveStatus(_Char, "DEACTIVATED", 0)
-THEN
-ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+// AND
+// DB_Select_Activated_Only(_Lock)
+// AND
+// HasActiveStatus(_Char, "DEACTIVATED", 0)
+// THEN
+// ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
 
-IF
-StoryEvent((CHARACTERGUID)_Char, "GM_Select")
-AND
-DB_Select_Deactivated_Only(_Lock)
-AND
-HasActiveStatus(_Char, "DEACTIVATED", 1)
-THEN
-ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+// AND
+// DB_Select_Deactivated_Only(_Lock)
+// AND
+// HasActiveStatus(_Char, "DEACTIVATED", 1)
+// THEN
+// ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
 
-IF
-StoryEvent((CHARACTERGUID)_Char, "GM_Select")
-AND
-NOT DB_Select_Deactivated_Only(_)
-AND
-NOT DB_Select_Activated_Only(_)
-THEN
-ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+// AND
+// NOT DB_Select_Deactivated_Only(_)
+// AND
+// NOT DB_Select_Activated_Only(_)
+// THEN
+// ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "GM_Unselect")

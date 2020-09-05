@@ -1,6 +1,6 @@
 Ext.Require("UGM_Helpers.lua")
 Ext.Require("UGM_Selection.lua")
-Ext.Require("UGM_Patrol.lua")
+Ext.Require("UGM_Movement.lua")
 
 -- Users management
 local users = {}
@@ -51,26 +51,29 @@ end
 
 -- Console commands
 local UGM_consoleCommands = {
-    UGM_ShroudManager_Regenerate = {1, "", "Regenerate entirely the level shroud. NOTE: only works in levels where shroud is activated."},
-    UGM_Selection_Type_Switch = {2, "", "Switch the selection type. In normal mode, you'll see an 'S' on the top of selected characters. In discreet mode, it's only shown in the console."},
-    Help = {3, "", "Display this help."},
-    Wipe = {4, "", "Wipe persistent vars table."},
-    PrintVars = {5, "", "Print persistent vars table"},
-    GetGameState = {6, "", "Get Current Game State"},
-    UGM_SetScale = {7, "<float>", "Set the character scale to the float value. Normal scale is 1.0, but it can vary."}
+    UGM_ShroudManager_Regenerate = {"", "Regenerate entirely the level shroud. NOTE: only works in levels where shroud is activated."},
+    UGM_Selection_Type_Switch = {"", "Switch the selection type. In normal mode, you'll see an 'S' on the top of selected characters. In discreet mode, it's only shown in the console."},
+    Help = {"", "Display this help."},
+    Wipe = {"", "Wipe persistent vars table."},
+    PrintVars = {"", "Print persistent vars table"},
+    GetGameState = {"", "Get Current Game State"},
+    UGM_SetScale = {"<float>", "Set the character scale to the float value. Normal scale is 1.0, but it can vary."},
+    UGM_Selection_Lock = {"", "Lock/Unlock the selections. A locked selection mean that the character won't be unselected after a tool use."}
 }
+
+local UGM_commandKeys = {}
+for key, desc in pairs(UGM_consoleCommands) do
+    table.insert(UGM_commandKeys, key)
+end
+table.sort(UGM_commandKeys)
 
 local function UGM_DisplayHelp()
     print("-------------- Ultimate GM Toolbox console help --------------")
     print("Note : commands with descriptions starting with '*' mean that it require at least one selected character")
-    local sorted = {}
-    for command,desc in pairs(UGM_consoleCommands) do
-        sorted[desc[1]] = command
-    end
-    for i,command in pairs(sorted) do
-        local desc = UGM_consoleCommands[sorted[i]]
-        print(" - "..command.." "..desc[2])
-        print("         "..desc[3])
+    for i, command in pairs(UGM_commandKeys) do
+        local desc = UGM_consoleCommands[command]
+        print(" - "..command.." "..desc[1])
+        print("         "..desc[2])
     end
     print()
 end
@@ -97,6 +100,7 @@ local function UGM_consoleCmd(cmd, ...)
             PostMessageToAllUsers("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(params[1]))
         end
     end
+    if cmd == "UGM_Selection_Lock" then ManageLock(nil, "GM_Lock_Switch") end
 end
 
 -- Create console commands

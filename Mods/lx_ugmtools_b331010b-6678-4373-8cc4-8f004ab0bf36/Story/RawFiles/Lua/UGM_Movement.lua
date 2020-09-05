@@ -49,3 +49,17 @@ local function ClearPatrol(char, status, causee)
 end
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", ClearPatrol)
+
+-- Regroup
+local function Regroup(object, event)
+    if event ~= "GM_Regroup" then return end
+    ItemRemove(object)
+    if target == nil then return end
+    local tx, ty, tz = GetPosition(target)
+    local grid = {}
+    for char, x in pairs(selected) do
+        if char ~= target then
+            
+        end
+    end
+end

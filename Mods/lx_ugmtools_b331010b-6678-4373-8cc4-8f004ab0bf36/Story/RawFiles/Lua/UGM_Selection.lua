@@ -1,6 +1,9 @@
 PersistentVars = {}
 selected = {}
+target = nil
+lock = false
 
+-- Initialization
 currentLevel = ""
 
 local function GetCurrentLevel(map, isEditor)
@@ -31,7 +34,7 @@ end
 
 Ext.RegisterListener("SessionLoaded", LoadVars)
 
-
+-- Selection type feature
 function SwitchSelectionType()
     local selectType = PersistentVars.selectType
     local newAlternate = selectType.alternate
@@ -41,6 +44,7 @@ function SwitchSelectionType()
     print("Switched selection type")
 end
 
+-- Selection DB management
 local function AddToSelection(char, event)
     if event ~= "GM_Select" then return end
     local option = PersistentVars.options
@@ -69,11 +73,69 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", RegisterSelect
 
 local function RemoveFromSelection(char, status, causee)
     if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
-        selected[char] = nil
-        if status == "GM_SELECTED_DISCREET" then
-            print("Unselected "..CharacterGetDisplayName(char).." "..char)
+        if not lock then
+            selected[char] = nil
+            if status == "GM_SELECTED_DISCREET" then
+                print("Unselected "..CharacterGetDisplayName(char).." "..char)
+            end
+        else
+            ApplyStatus(char, status, -1.0, 1)
         end
     end
 end
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", RemoveFromSelection)
+
+-- Lock selection
+function ManageLock(object, event)
+    if event == "GM_Lock_Select" then
+        lock = true
+        if object ~= nil then ItemRemove(object) end
+    elseif event == "GM_Unlock_Select" then
+        lock = false
+        if object ~= nil then ItemRemove(object) end
+    elseif event == "GM_Lock_Switch" then
+        if lock then 
+            lock = false
+        else 
+            lock = true
+        end
+    end
+end
+
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManageLock)
+
+-- Quick selection feature
+local function QuickSelect(call, netID)
+    local char = Ext.GetCharacter(tonumber(netID))
+    ApplyStatus(char.MyGuid, PersistentVars.selectType.current, -1, 1)
+    lock = true
+end
+
+Ext.RegisterNetListener("UGM_QuickSelection", QuickSelect)
+
+local function QuickDeselect(call, netID)
+    local char = Ext.GetCharacter(tonumber(netID))
+    RemoveStatus(char.MyGuid, PersistentVars.selectType.current)
+    lock = false
+end
+
+Ext.RegisterNetListener("UGM_QuickDeselection", QuickDeselect)
+
+-- Target feature
+local function Targeting(char, event)
+    if target ~= nil then
+        RemoveStatus(target, "GM_TARGETED")
+    end
+    target = char
+    ApplyStatus(char, "GM_TARGETED", -1.0, 1)
+end
+
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", Targeting)
+
+local function RemoveTargeting(char, status, causee)
+    if status ~= "GM_TARGETED" then return end
+    target = nil
+end
+
+Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", RemoveTargeting)
