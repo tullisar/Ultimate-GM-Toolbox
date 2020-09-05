@@ -1,0 +1,122 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//2m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_2m_78fc9c52-2881-4f5b-8689-306fe93510f4")
+	THEN
+		ItemEvent(__Me, "GM_Selection_2m")
+	ENDIF
+	
+	//5m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_5m_fff9943d-2863-4fdb-a38a-c5718bdf0159")
+	THEN
+		ItemEvent(__Me, "GM_Selection_5m")
+	ENDIF
+	
+	//10m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_10m_4e4eb9b5-3d68-42d6-93b8-a4d4104ec7cf")
+	THEN
+		ItemEvent(__Me, "GM_Selection_10m")
+	ENDIF
+	
+	//1m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_1m_9427f1ee-b05b-4ac7-b424-e5d0ca696593")
+	THEN
+		ItemEvent(__Me, "GM_Selection_1m")
+	ENDIF
+	
+	//Lock Select
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Lock_Select_ba01ddac-828f-4f57-9c04-e3baaf5155fe")
+	THEN
+		ItemEvent(__Me, "GM_Lock_Select")
+	ENDIF
+	
+	//Unlock Select
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unlock_Select_b80eb1f8-9438-49b8-a655-f63fd89aeddc")
+	THEN
+		ItemEvent(__Me, "GM_Unlock_Select")
+	ENDIF
+	
+	//Unselect 2m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unselect_2m_5c54b056-66d6-4fe2-9d54-00b44d50e7b6")
+	THEN
+		ItemEvent(__Me, "GM_Unselection_2m")
+	ENDIF
+	
+	//Unselect 5m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unselect_5m_5c02797e-76ae-4708-8bbd-b96a7c610981")
+	THEN
+		ItemEvent(__Me, "GM_Unselection_5m")
+	ENDIF
+	
+	//Unselect All
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unselect_All_2377391f-6885-4407-a803-18da01583385")
+	THEN
+		ItemEvent(__Me, "GM_Unselection_All")
+	ENDIF
+	
+	//Unselect 1m
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unselect_1m_9a3df8e7-c6df-4a05-b483-058e5fe0b6e5")
+	THEN
+		ItemEvent(__Me, "GM_Unselection_1m")
+	ENDIF
+	
+	//Select activated only
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_A_O_4e743012-f537-4c9c-93b3-4f804e272777")
+	THEN
+		ItemEvent(__Me, "GM_Select_Activated")
+	ENDIF
+	
+	//Select deactivated only
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_D_O_527410eb-64b8-42d0-a1ca-83cf77921a8c")
+	THEN
+		ItemEvent(__Me, "GM_Select_Deactivated")
+	ENDIF
+	
+	//Reset selection type
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Select_R_O_e8d5ec5c-483d-4901-a9e6-644c78a1d91d")
+	THEN
+		ItemEvent(__Me, "GM_Select_All_Types")
+	ENDIF
+	
+	//Target
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Target_b4c67837-ab48-4572-b7de-26ec2ea821aa")
+	THEN
+		ItemEvent(__Me, "GM_Target_Zone")
+	ENDIF

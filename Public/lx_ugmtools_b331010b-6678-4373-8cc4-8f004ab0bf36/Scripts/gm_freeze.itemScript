@@ -1,0 +1,26 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Freeze players
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Freeze_Players_f289a083-2ca4-4dcb-94c5-30a21f766cac")
+	THEN
+		ItemEvent(__Me, "GM_Freeze_Players")
+	ENDIF
+	
+	//Unfreeze players
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unfreeze_Players_0c84bbe5-00bc-424e-bb90-bf38015336aa")
+	THEN
+		ItemEvent(__Me, "GM_Unfreeze_Players")
+	ENDIF

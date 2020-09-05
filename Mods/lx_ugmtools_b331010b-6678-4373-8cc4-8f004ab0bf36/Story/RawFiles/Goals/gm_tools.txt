@@ -1,0 +1,227 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+/////////// SELECTION ///////////
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Selection_2m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 2.0, "GM_Select");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Selection_5m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 5.0, "GM_Select");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Selection_10m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 10.0, "GM_Select");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Selection_1m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 1.0, "GM_Select");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Lock_Select")
+THEN
+DB_GM_Lock_Activated(1);
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Unlock_Select")
+AND
+DB_GM_Lock_Activated(_Lock)
+THEN
+NOT DB_GM_Lock_Activated(_Lock);
+//ItemRemove((ITEMGUID)_Item);
+
+/////////// UNSELECT ///////////
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Unselection_2m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 2.0, "GM_Unselect");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Unselection_5m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 5.0, "GM_Unselect");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Unselection_1m")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 1.0, "GM_Unselect");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Unselection_All")
+THEN
+CharacterLaunchOsirisOnlyIterator("GM_Unselect");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Target_Zone")
+THEN
+CharacterLaunchIteratorAroundObject(_Item, 1.0, "GM_Target_Apply");
+ItemRemove((ITEMGUID)_Item);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Target_Apply")
+THEN
+ApplyStatus(_Char, "GM_TARGETED", -1.0, 1);
+
+
+// Processing
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+AND
+DB_Select_Activated_Only(_Lock)
+AND
+HasActiveStatus(_Char, "DEACTIVATED", 0)
+THEN
+ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+AND
+DB_Select_Deactivated_Only(_Lock)
+AND
+HasActiveStatus(_Char, "DEACTIVATED", 1)
+THEN
+ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Select")
+AND
+NOT DB_Select_Deactivated_Only(_)
+AND
+NOT DB_Select_Activated_Only(_)
+THEN
+ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Unselect")
+THEN
+RemoveStatus(_Char, "GM_SELECTED");
+
+IF
+CharacterStatusApplied(_Char, "GM_SELECTED", _Cause)
+THEN
+DB_GM_Selection(_Char);
+
+IF
+CharacterStatusRemoved(_Char, "GM_SELECTED", _Cause)
+AND
+DB_GM_Lock_Activated(_Lock)
+THEN
+NOT DB_GM_Selection(_Char);
+ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+
+IF
+CharacterStatusRemoved(_Char, "GM_SELECTED", _Cause)
+AND
+NOT DB_GM_Lock_Activated(_)
+THEN
+NOT DB_GM_Selection(_Char);
+
+// Selection types
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Select_Activated")
+AND
+NOT DB_Select_Deactivated_Only(_)
+THEN
+DB_Select_Activated_Only(1);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Select_Deactivated")
+AND
+NOT DB_Select_Activated_Only(_)
+THEN
+DB_Select_Deactivated_Only(1);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
+AND
+DB_Select_Deactivated_Only(_Lock)
+THEN
+NOT DB_Select_Deactivated_Only(_Lock);
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
+AND
+DB_Select_Activated_Only(_Lock)
+THEN
+NOT DB_Select_Activated_Only(_Lock);
+
+//Delete objects if there is no NPC selected
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Check")
+//AND
+//NOT DB_GM_Selection(_)
+THEN
+DB_GM_Tool_Item(_Item);
+TimerLaunch("GM_Cleanup_Item", 10);
+
+IF
+TimerFinished("GM_Cleanup_Item")
+AND
+DB_GM_Tool_Item(_Item)
+THEN
+NOT DB_GM_Tool_Item(_Item);
+ItemRemove(_Item);
+
+//Cancel everything when entering combat
+IF
+ObjectEnteredCombat(_Char, _ID)
+AND
+ObjectIsCharacter(_Char, 1)
+AND
+QRY_GM_Has_Mod_Status((CHARACTERGUID)_Char)
+THEN
+RemoveStatus(_Char, "GM_SELECTED");
+RemoveStatus(_Char, "GM_PATROLING");
+RemoveStatus(_Char, "GM_FOLLOW");
+RemoveStatus(_Char, "GM_MOVING");
+RemoveStatus(_Char, "GM_TARGETED");
+ApplyStatus(_Char, "UNSHEATHED", 0.0, 1);
+
+
+//Verify if a character has any of the mod status
+QRY
+QRY_GM_Has_Mod_Status((CHARACTERGUID)_Char)
+AND
+HasActiveStatus(_Char, "GM_SELECTED", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GM_Has_Mod_Status((CHARACTERGUID)_Char)
+AND
+HasActiveStatus(_Char, "GM_PATROLING", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GM_Has_Mod_Status((CHARACTERGUID)_Char)
+AND
+HasActiveStatus(_Char, "GM_MOVING", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+QRY_GM_Has_Mod_Status((CHARACTERGUID)_Char)
+AND
+HasActiveStatus(_Char, "GM_FOLLOW", 1)
+THEN
+DB_NOOP(1);
+EXITSECTION
+
+ENDEXITSECTION

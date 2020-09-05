@@ -1,0 +1,26 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Unsheathe
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Unsheathe_669c3b50-4762-46ea-84fe-f7b1671535b6")
+	THEN
+		ItemEvent(__Me, "GM_Unsheathe")
+	ENDIF
+	
+	//Sheathe
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Sheathe_0c17b4f9-2d53-4918-8eb9-b30614de0f4e")
+	THEN
+		ItemEvent(__Me, "GM_Sheathe")
+	ENDIF

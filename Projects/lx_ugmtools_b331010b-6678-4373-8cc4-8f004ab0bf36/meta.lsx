@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="6" build="0" />
+    <region id="MetaData">
+        <node id="root">
+            <attribute id="Module" value="b331010b-6678-4373-8cc4-8f004ab0bf36" type="23" />
+            <attribute id="Name" value="lx_ugmtools" type="23" />
+            <attribute id="Type" value="Adventure" type="23" />
+            <attribute id="UUID" value="64e0ec3d-0ad9-4162-b3b8-fa927db994d3" type="23" />
+        </node>
+    </region>
+</save>

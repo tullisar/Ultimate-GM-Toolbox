@@ -1,0 +1,39 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+StoryEvent(_Item, "GM_Bossify")
+AND
+DB_GM_Selection(_Char)
+AND
+IsBoss(_Char, 0)
+THEN
+SetIsBoss(_Char, 1);
+RemoveStatus(_Char, "GM_SELECTED");
+DB_GM_Bossified(_Char);
+TimerLaunch("GM_Bossify_Cooldown", 20);
+
+IF
+StoryEvent(_Item, "GM_Bossify")
+AND
+DB_GM_Selection(_Char)
+AND
+IsBoss(_Char, 1)
+AND
+NOT DB_GM_Bossified(_Char)
+THEN
+SetIsBoss(_Char, 0);
+RemoveStatus(_Char, "GM_SELECTED");
+
+IF
+TimerFinished("GM_Bossify_Cooldown")
+AND
+DB_GM_Bossified(_Char)
+THEN
+NOT DB_GM_Bossified(_Char);
+
+EXITSECTION
+
+ENDEXITSECTION

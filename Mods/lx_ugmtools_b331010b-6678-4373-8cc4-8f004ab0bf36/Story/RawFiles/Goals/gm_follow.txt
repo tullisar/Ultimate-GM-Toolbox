@@ -1,0 +1,52 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusApplied(_Target, "GM_TARGETED", _Cause)
+THEN
+DB_GM_Targeted(_Target);
+
+IF
+CharacterStatusRemoved(_Target, "GM_TARGETED", _Cause)
+//AND
+//DB_GM_Targeted(_Target)
+THEN
+NOT DB_GM_Targeted(_Target);
+
+/*
+IF
+CharacterStatusRemoved(_Target, "GM_TARGETED", _Cause)
+AND
+DB_GM_Follow((CHARACTERGUID)_Char, _Target)
+THEN
+NOT DB_GM_Targeted(_Target);
+RemoveStatus(_Char, "GM_FOLLOW");
+*/
+
+IF
+StoryEvent((CHARACTERGUID)_Dummy, "GM_Start_Follow")
+AND
+DB_GM_Selection(_Char)
+AND
+DB_GM_Targeted(_Target)
+THEN
+DB_GM_Follow(_Char, _Target);
+ProcCharacterFollowCharacter(_Char, _Target);
+RemoveStatus(_Char, "GM_SELECTED");
+ApplyStatus(_Char, "GM_FOLLOW", -1.0, 1);
+
+IF
+CharacterStatusRemoved(_Char, "GM_FOLLOW", _Cause)
+AND
+DB_GM_Follow(_Char, _Target)
+THEN
+NOT DB_GM_Follow(_Char, _Target);
+ProcCharacterStopFollow(_Char);
+CharacterPurgeQueue(_Char);
+
+
+EXITSECTION
+
+ENDEXITSECTION

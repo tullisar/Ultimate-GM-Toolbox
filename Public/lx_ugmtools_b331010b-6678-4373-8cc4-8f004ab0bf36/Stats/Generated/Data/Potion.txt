@@ -1,0 +1,13 @@
+new entry "Selected"
+type "Potion"
+
+new entry "Patroling"
+type "Potion"
+data "MovementSpeedBoost" "-25"
+
+new entry "Targeted"
+type "Potion"
+
+new entry "Follow"
+type "Potion"
+

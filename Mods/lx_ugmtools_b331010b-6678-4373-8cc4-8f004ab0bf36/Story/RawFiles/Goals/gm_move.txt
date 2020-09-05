@@ -1,0 +1,203 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+/////// Procedures for finding the closest character to the target
+PROC
+MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
+AND
+DB_GM_Selection(_Char)
+AND
+GetDistanceTo(_Char, _Object, _Dist)
+THEN
+MyMod_CompareClosestDistance(_Object, _Char, _Dist);
+
+PROC
+MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
+AND
+DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist)
+AND
+_Dist < _OtherDist
+THEN
+NOT DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist);
+DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+
+PROC
+MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
+AND
+NOT DB_MyMod_Temp_LastDist(_Object, _, _)
+THEN
+DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+
+PROC
+MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
+AND
+DB_MyMod_Temp_LastDist(_Object, _Char, _Dist)
+THEN
+NOT DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+SetStoryEvent(_Char, _Event);
+
+
+///////// Walk
+///Normal walk
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Walk")
+AND
+NOT DB_GM_Moving_Vector(_,_,_)
+AND
+GetPosition(_Item, _PosX, _PosY, _PosZ)
+AND
+NOT DB_GM_Moving(_)
+THEN
+DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
+MyMod_GetClosest(_Item, "GM_Move_Walk2");
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Walk")
+AND
+DB_GM_Moving_Vector(_VX,_VY,_VZ)
+THEN
+SetStoryEvent(_Item, "GM_Move_Walk3");
+
+///Interrupt walk
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Walk")
+AND
+DB_GM_Moving(_Char)
+THEN
+RemoveStatus(_Char, "GM_MOVING");
+SetStoryEvent(_Item, "GM_Move_Walk");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Move_Walk2")
+AND
+DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ)
+AND
+GetPosition(_Char, _CPosX, _CPosY, _CPosZ)
+AND
+RealSubtract(_PosX, _CPosX, _VX)
+AND
+RealSubtract(_PosY, _CPosY, _VY)
+AND
+RealSubtract(_PosZ, _CPosZ, _VZ)
+THEN
+DB_GM_Moving_Vector(_VX, _VY, _VZ);
+NOT DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
+SetStoryEvent((ITEMGUID)_Item, "GM_Move_Walk3");
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Walk3")
+AND
+DB_GM_Selection(_Char)
+AND
+DB_GM_Moving_Vector(_VX,_VY,_VZ)
+AND
+GetPosition(_Char, _PosX, _PosY, _PosZ)
+AND
+RealSum(_PosX, _VX, _FPosX)
+AND
+RealSum(_PosY, _VY, _FPosY)
+AND
+RealSum(_PosZ, _VZ, _FPosZ)
+THEN
+CharacterPurgeQueue(_Char);
+DB_GM_Moving(_Char);
+RemoveStatus(_Char, "GM_SELECTED");
+ApplyStatus(_Char, "GM_MOVING", -1.0, 1);
+CharacterMoveToPosition(_Char, _FPosX, _FPosY, _FPosZ, 0, "NPC_Move_Done");
+ItemDestroy(_Item);
+
+
+//////////// Run
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+AND
+NOT DB_GM_Moving_Vector(_,_,_)
+AND
+NOT DB_GM_Moving(_)
+AND
+GetPosition(_Item, _PosX, _PosY, _PosZ)
+THEN
+DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
+MyMod_GetClosest(_Item, "GM_Move_Run2");
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+AND
+DB_GM_Moving_Vector(_VX,_VY,_VZ)
+THEN
+SetStoryEvent(_Item, "GM_Move_Run3");
+
+///Interrupt run
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+AND
+DB_GM_Moving(_Char)
+THEN
+RemoveStatus(_Char, "GM_MOVING");
+SetStoryEvent(_Item, "GM_Move_Run");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "GM_Move_Run2")
+AND
+DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ)
+AND
+GetPosition(_Char, _CPosX, _CPosY, _CPosZ)
+AND
+RealSubtract(_PosX, _CPosX, _VX)
+AND
+RealSubtract(_PosY, _CPosY, _VY)
+AND
+RealSubtract(_PosZ, _CPosZ, _VZ)
+THEN
+DB_GM_Moving_Vector(_VX, _VY, _VZ);
+NOT DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
+SetStoryEvent((ITEMGUID)_Item, "GM_Move_Run3");
+
+IF
+StoryEvent((ITEMGUID)_Item, "GM_Move_Run3")
+AND
+DB_GM_Selection(_Char)
+AND
+DB_GM_Moving_Vector(_VX,_VY,_VZ)
+AND
+GetPosition(_Char, _PosX, _PosY, _PosZ)
+AND
+RealSum(_PosX, _VX, _FPosX)
+AND
+RealSum(_PosY, _VY, _FPosY)
+AND
+RealSum(_PosZ, _VZ, _FPosZ)
+THEN
+DB_GM_Moving(_Char);
+RemoveStatus(_Char, "GM_SELECTED");
+ApplyStatus(_Char, "GM_MOVING", -1.0, 1);
+CharacterMoveToPosition(_Char, _FPosX, _FPosY, _FPosZ, 1, "NPC_Move_Done");
+ItemDestroy(_Item);
+
+//////////////Done, clear everything
+IF
+StoryEvent((CHARACTERGUID)_Char, "NPC_Move_Done")
+THEN
+RemoveStatus(_Char, "GM_MOVING");
+NOT DB_GM_Moving(_Char);
+
+
+IF
+CharacterStatusRemoved(_Char, "GM_MOVING", _Cause)
+THEN
+CharacterPurgeQueue(_Char);
+NOT DB_GM_Moving(_Char);
+
+IF
+DB_GM_Moving(_Char)
+AND
+NOT DB_GM_Selection(_)
+AND
+DB_GM_Moving_Vector(_VX, _VY, _VZ)
+THEN
+NOT DB_GM_Moving_Vector(_VX, _VY, _VZ);
+EXITSECTION
+
+ENDEXITSECTION
