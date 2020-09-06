@@ -110,33 +110,33 @@ ItemDestroy(_Item);
 
 
 //////////// Run
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
-AND
-NOT DB_GM_Moving_Vector(_,_,_)
-AND
-NOT DB_GM_Moving(_)
-AND
-GetPosition(_Item, _PosX, _PosY, _PosZ)
-THEN
-DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
-MyMod_GetClosest(_Item, "GM_Move_Run2");
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+// AND
+// NOT DB_GM_Moving_Vector(_,_,_)
+// AND
+// NOT DB_GM_Moving(_)
+// AND
+// GetPosition(_Item, _PosX, _PosY, _PosZ)
+// THEN
+// DB_GM_Move_Position(_Item, _PosX, _PosY, _PosZ);
+// MyMod_GetClosest(_Item, "GM_Move_Run2");
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
-AND
-DB_GM_Moving_Vector(_VX,_VY,_VZ)
-THEN
-SetStoryEvent(_Item, "GM_Move_Run3");
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+// AND
+// DB_GM_Moving_Vector(_VX,_VY,_VZ)
+// THEN
+// SetStoryEvent(_Item, "GM_Move_Run3");
 
-///Interrupt run
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
-AND
-DB_GM_Moving(_Char)
-THEN
-RemoveStatus(_Char, "GM_MOVING");
-SetStoryEvent(_Item, "GM_Move_Run");
+// ///Interrupt run
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Move_Run")
+// AND
+// DB_GM_Moving(_Char)
+// THEN
+// RemoveStatus(_Char, "GM_MOVING");
+// SetStoryEvent(_Item, "GM_Move_Run");
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "GM_Move_Run2")

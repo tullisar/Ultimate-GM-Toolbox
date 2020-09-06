@@ -24,3 +24,13 @@ function CopyTable(t)
     end
     return newTable
 end
+
+function SubtractCoordinates(t, t2)
+    local result = {x = t.x - t2.x, y = t.y - t2.y, z = t.z - t2.z}
+    return result
+end
+
+function AddCoordinates(t, t2)
+    local result = {x = t.x + t2.x, y = t.y + t2.y, z = t.z + t2.z}
+    return result
+end

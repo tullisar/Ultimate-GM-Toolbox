@@ -63,3 +63,38 @@ local function Regroup(object, event)
         end
     end
 end
+
+-- Move
+local function GetClosest(item)
+    local closest = nil
+    local chosen = nil
+    for char, x in pairs(selected) do
+        local dist = GetDistanceTo(char, item)
+        if closest == nil or closest > dist then closest = dist; chosen = char end
+    end
+    return chosen
+end
+
+local function ClassicMoveRun(object, event)
+    if event ~= "GM_Move_Run" then return end
+    local closest = GetClosest(object)
+    local vx,vy,vz = GetPosition(object)
+    local itemPos = {x = vx, y = vy, z = vz}
+    Ext.Print(Ext.JsonStringify(itemPos))
+    ItemRemove(object)
+    vx, vy, vz = GetPosition(closest)
+    local closestPos = {x = vx, y = vy, z = vz}
+    local vector = SubtractCoordinates(closestPos, itemPos)
+    for char, status in pairs(selected) do
+        vx, vy, vz = GetPosition(char)
+        local pos = {x = vx, y = vy, z = vz}
+        Ext.Print(Ext.JsonStringify(pos))
+        local vector = SubtractCoordinates(itemPos, pos)
+        Ext.Print(Ext.JsonStringify(vector))
+        local destination = AddCoordinates(pos, vector)
+        Ext.Print(Ext.JsonStringify(destination))
+        CharacterMoveToPosition(char, destination.x, destination.y, destination.z, 1, "NPC_Move_Done")
+    end
+end
+
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", ClassicMoveRun)

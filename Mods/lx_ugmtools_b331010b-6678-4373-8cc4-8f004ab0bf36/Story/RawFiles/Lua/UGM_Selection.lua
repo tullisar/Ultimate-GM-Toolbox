@@ -61,6 +61,7 @@ end
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", AddToSelection)
 
 local function RegisterSelection(char, status, causee)
+    Ext.Print("Registered selection")
     if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
         selected[char] = status
         if status == "GM_SELECTED_DISCREET" then
@@ -124,6 +125,7 @@ Ext.RegisterNetListener("UGM_QuickDeselection", QuickDeselect)
 
 -- Target feature
 local function Targeting(char, event)
+    if event ~= "GM_Target_Apply" then return end
     if target ~= nil then
         RemoveStatus(target, "GM_TARGETED")
     end
