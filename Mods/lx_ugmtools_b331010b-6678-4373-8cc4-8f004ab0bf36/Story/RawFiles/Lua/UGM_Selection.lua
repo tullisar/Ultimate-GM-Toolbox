@@ -2,6 +2,8 @@ PersistentVars = {}
 selected = {}
 target = nil
 lock = false
+quickSelection = nil
+bypasslock = false
 
 -- Initialization
 currentLevel = ""
@@ -61,8 +63,8 @@ end
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", AddToSelection)
 
 local function RegisterSelection(char, status, causee)
-    Ext.Print("Registered selection")
     if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
+        Ext.Print("Registered selection")
         selected[char] = status
         if status == "GM_SELECTED_DISCREET" then
             print("Selected "..CharacterGetDisplayName(char).." "..char)
@@ -74,6 +76,10 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", RegisterSelect
 
 local function RemoveFromSelection(char, status, causee)
     if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
+        if bypasslock then
+            bypasslock = false
+            return
+        end
         if not lock then
             selected[char] = nil
             if status == "GM_SELECTED_DISCREET" then
@@ -109,16 +115,26 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManageLock)
 -- Quick selection feature
 local function QuickSelect(call, netID)
     local char = Ext.GetCharacter(tonumber(netID))
-    ApplyStatus(char.MyGuid, PersistentVars.selectType.current, -1, 1)
-    lock = true
+    if quickSelection ~= char.MyGuid then
+        if quickSelection ~= nil then
+            bypasslock = true
+            RemoveStatus(quickSelection, PersistentVars.selectType.current)
+        end
+        if HasActiveStatus(char.MyGuid, PersistentVars.selectType.current) == 0 then
+            ApplyStatus(char.MyGuid, PersistentVars.selectType.current, -1, 1)
+        end
+        lock = true
+        quickSelection = char.MyGuid
+    end
 end
 
 Ext.RegisterNetListener("UGM_QuickSelection", QuickSelect)
 
 local function QuickDeselect(call, netID)
     local char = Ext.GetCharacter(tonumber(netID))
-    RemoveStatus(char.MyGuid, PersistentVars.selectType.current)
     lock = false
+    RemoveStatus(char.MyGuid, PersistentVars.selectType.current)
+    quickSelection = nil
 end
 
 Ext.RegisterNetListener("UGM_QuickDeselection", QuickDeselect)

@@ -75,8 +75,8 @@ local function GetClosest(item)
     return chosen
 end
 
-local function ClassicMoveRun(object, event)
-    if event ~= "GM_Move_Run" then return end
+local function ClassicMove(object, event)
+    if event ~= "GM_Move_Run" and event ~= "GM_Move_Walk" then return end
     local closest = GetClosest(object)
     local vx,vy,vz = GetPosition(object)
     local itemPos = {x = vx, y = vy, z = vz}
@@ -84,17 +84,21 @@ local function ClassicMoveRun(object, event)
     ItemRemove(object)
     vx, vy, vz = GetPosition(closest)
     local closestPos = {x = vx, y = vy, z = vz}
-    local vector = SubtractCoordinates(closestPos, itemPos)
+    local vector = SubtractCoordinates(itemPos, closestPos)
     for char, status in pairs(selected) do
+        if HasActiveStatus(char, "GM_MOVING") == 1 then
+            CharacterPurgeQueue(char)
+        end
         vx, vy, vz = GetPosition(char)
         local pos = {x = vx, y = vy, z = vz}
-        Ext.Print(Ext.JsonStringify(pos))
-        local vector = SubtractCoordinates(itemPos, pos)
-        Ext.Print(Ext.JsonStringify(vector))
         local destination = AddCoordinates(pos, vector)
-        Ext.Print(Ext.JsonStringify(destination))
-        CharacterMoveToPosition(char, destination.x, destination.y, destination.z, 1, "NPC_Move_Done")
+        if event == "GM_Move_Run" then
+            CharacterMoveToPosition(char, destination.x, destination.y, destination.z, 1, "NPC_Move_Done")
+        elseif event == "GM_Move_Walk" then
+            CharacterMoveToPosition(char, destination.x, destination.y, destination.z, 0, "NPC_Move_Done")
+        end
+        ApplyStatus(char, "GM_MOVING", -1.0, 1)
     end
 end
 
-Ext.RegisterOsirisListener("StoryEvent", 2, "before", ClassicMoveRun)
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", ClassicMove)
