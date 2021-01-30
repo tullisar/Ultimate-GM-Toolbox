@@ -3,47 +3,47 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-IF
-CharacterStatusApplied(_Char, _Status, _Cause)
-THEN
-DB_GM_Status_Track(_Char, _Status);
+// IF
+// CharacterStatusApplied(_Char, _Status, _Cause)
+// THEN
+// DB_GM_Status_Track(_Char, _Status);
 
-IF
-CharacterStatusRemoved(_Char, _Status, _Cause)
-THEN
-NOT DB_GM_Status_Track(_Char, _Status);
+// IF
+// CharacterStatusRemoved(_Char, _Status, _Cause)
+// THEN
+// NOT DB_GM_Status_Track(_Char, _Status);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Copy_Status")
-AND
-DB_GM_Targeted(_Target)
-AND
-DB_GM_Selection(_Char)
-AND
-DB_GM_Status_Track(_Target, _Status)
-AND
-GetStatusTurns(_Target, _Status, _Turns)
-AND
-Real(_Turns, _TurnsR)
-AND
-RealProduct(_TurnsR, 6.0, _TurnsRF)
-THEN
-RemoveStatus(_Target, "GM_TARGETED");
-RemoveStatus(_Char, "GM_SELECTED");
-ApplyStatus(_Char, _Status, _TurnsRF, 1);
-RemoveStatus(_Char, "GM_TARGETED");
-ItemRemove(_Item);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Copy_Status")
+// AND
+// DB_GM_Targeted(_Target)
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// DB_GM_Status_Track(_Target, _Status)
+// AND
+// GetStatusTurns(_Target, _Status, _Turns)
+// AND
+// Real(_Turns, _TurnsR)
+// AND
+// RealProduct(_TurnsR, 6.0, _TurnsRF)
+// THEN
+// RemoveStatus(_Target, "GM_TARGETED");
+// RemoveStatus(_Char, "GM_SELECTED");
+// ApplyStatus(_Char, _Status, _TurnsRF, 1);
+// RemoveStatus(_Char, "GM_TARGETED");
+// ItemRemove(_Item);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Clear_Status")
-AND
-DB_GM_Selection(_Char)
-AND
-DB_GM_Status_Track(_Target, _Status)
-THEN
-RemoveStatus(_Char, "GM_SELECTED");
-RemoveStatus(_Char, _Status);
-ItemRemove(_Item);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Clear_Status")
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// DB_GM_Status_Track(_Target, _Status)
+// THEN
+// RemoveStatus(_Char, "GM_SELECTED");
+// RemoveStatus(_Char, _Status);
+// ItemRemove(_Item);
 
 EXITSECTION
 

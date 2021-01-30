@@ -3,23 +3,23 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Activate")
-AND
-DB_GM_Selection(_Char)
-THEN
-RemoveStatus(_Char, "GM_SELECTED");
-RemoveStatus(_Char, "DEACTIVATED");
-ItemRemove(_Item);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Activate")
+// AND
+// DB_GM_Selection(_Char)
+// THEN
+// RemoveStatus(_Char, "GM_SELECTED");
+// RemoveStatus(_Char, "DEACTIVATED");
+// ItemRemove(_Item);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Deactivate")
-AND
-DB_GM_Selection(_Char)
-THEN
-RemoveStatus(_Char, "GM_SELECTED");
-ApplyStatus(_Char, "DEACTIVATED", -1.0, 1);
-ItemRemove(_Item);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Deactivate")
+// AND
+// DB_GM_Selection(_Char)
+// THEN
+// RemoveStatus(_Char, "GM_SELECTED");
+// ApplyStatus(_Char, "DEACTIVATED", -1.0, 1);
+// ItemRemove(_Item);
 EXITSECTION
 
 ENDEXITSECTION

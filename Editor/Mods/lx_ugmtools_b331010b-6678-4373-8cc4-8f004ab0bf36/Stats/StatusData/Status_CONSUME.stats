@@ -67,5 +67,17 @@
         <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_selected" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_TARGETED_DISCREET" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_targeted" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_ANIMATED" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_animated" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

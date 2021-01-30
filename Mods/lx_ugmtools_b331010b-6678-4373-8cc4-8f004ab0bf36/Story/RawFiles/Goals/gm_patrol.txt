@@ -1,8 +1,8 @@
-// Version 1
-// SubGoalCombiner SGC_AND
-// INITSECTION
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
 
-// KBSECTION
+KBSECTION
 // /////////// PATROLING ///////////
 // IF
 // StoryEvent((ITEMGUID)_Item, "GM_Patrol_Peaceful")
@@ -129,6 +129,6 @@
 
 
 
-// EXITSECTION
+EXITSECTION
 
-// ENDEXITSECTION
+ENDEXITSECTION

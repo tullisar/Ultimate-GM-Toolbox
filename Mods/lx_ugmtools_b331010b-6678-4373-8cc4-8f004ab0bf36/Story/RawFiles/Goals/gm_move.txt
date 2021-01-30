@@ -4,39 +4,39 @@ INITSECTION
 
 KBSECTION
 /////// Procedures for finding the closest character to the target
-PROC
-MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
-AND
-DB_GM_Selection(_Char)
-AND
-GetDistanceTo(_Char, _Object, _Dist)
-THEN
-MyMod_CompareClosestDistance(_Object, _Char, _Dist);
+// PROC
+// MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// GetDistanceTo(_Char, _Object, _Dist)
+// THEN
+// MyMod_CompareClosestDistance(_Object, _Char, _Dist);
 
-PROC
-MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
-AND
-DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist)
-AND
-_Dist < _OtherDist
-THEN
-NOT DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist);
-DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+// PROC
+// MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
+// AND
+// DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist)
+// AND
+// _Dist < _OtherDist
+// THEN
+// NOT DB_MyMod_Temp_LastDist(_Object, _OtherChar, _OtherDist);
+// DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
 
-PROC
-MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
-AND
-NOT DB_MyMod_Temp_LastDist(_Object, _, _)
-THEN
-DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+// PROC
+// MyMod_CompareClosestDistance((GUIDSTRING)_Object, (CHARACTERGUID)_Char, (REAL)_Dist)
+// AND
+// NOT DB_MyMod_Temp_LastDist(_Object, _, _)
+// THEN
+// DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
 
-PROC
-MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
-AND
-DB_MyMod_Temp_LastDist(_Object, _Char, _Dist)
-THEN
-NOT DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
-SetStoryEvent(_Char, _Event);
+// PROC
+// MyMod_GetClosest((GUIDSTRING)_Object, (STRING)_Event)
+// AND
+// DB_MyMod_Temp_LastDist(_Object, _Char, _Dist)
+// THEN
+// NOT DB_MyMod_Temp_LastDist(_Object, _Char, _Dist);
+// SetStoryEvent(_Char, _Event);
 
 
 ///////// Walk
@@ -177,10 +177,10 @@ SetStoryEvent(_Char, _Event);
 // ItemDestroy(_Item);
 
 //////////////Done, clear everything
-IF
-StoryEvent((CHARACTERGUID)_Char, "NPC_Move_Done")
-THEN
-RemoveStatus(_Char, "GM_MOVING");
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "NPC_Move_Done")
+// THEN
+// RemoveStatus(_Char, "GM_MOVING");
 // NOT DB_GM_Moving(_Char);
 
 

@@ -34,3 +34,32 @@ function AddCoordinates(t, t2)
     local result = {x = t.x + t2.x, y = t.y + t2.y, z = t.z + t2.z}
     return result
 end
+
+function string.startswith(String,Start)
+    return string.sub(String,1,string.len(Start))==Start
+ end
+
+ function ClosestHalf(number)
+    local negative = 0 > number
+    local int = math.floor(math.abs(number))
+    local decimal = math.abs(number)-int
+    local higher = false
+    local half = 0.5
+    if decimal > half then
+        higher = true
+        decimal = decimal - half
+    end
+    if negative then 
+        int = -int
+        half = -half
+    end
+    if math.abs(decimal) < math.abs(decimal-0.5) then
+        if higher then
+            return int+half
+        else
+            return int
+        end
+    else
+        return int+2*half
+    end
+ end

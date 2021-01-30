@@ -3,17 +3,17 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Transform")
-AND
-DB_GM_Selection(_To)
-AND
-DB_GM_Targeted(_From)
-THEN
-CharacterTransformAppearanceTo(_To, _From, 0, 1);
-//CharacterTransformFromCharacter(_To, _From, 0, 0, 0, 0, 0, 1, 0);
-RemoveStatus(_From, "GM_TARGETED");
-RemoveStatus(_To, "GM_SELECTED");
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Transform")
+// AND
+// DB_GM_Selection(_To)
+// AND
+// DB_GM_Targeted(_From)
+// THEN
+// CharacterTransformAppearanceTo(_To, _From, 0, 1);
+// //CharacterTransformFromCharacter(_To, _From, 0, 0, 0, 0, 0, 1, 0);
+// RemoveStatus(_From, "GM_TARGETED");
+// RemoveStatus(_To, "GM_SELECTED");
 
 EXITSECTION
 

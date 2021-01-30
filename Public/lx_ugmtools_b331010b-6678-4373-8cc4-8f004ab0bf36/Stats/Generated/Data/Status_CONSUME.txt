@@ -64,3 +64,13 @@ data "StatusType" "CONSUME"
 data "ForGameMaster" "No"
 data "StackId" "stack_selected"
 
+new entry "GM_TARGETED_DISCREET"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_targeted"
+
+new entry "GM_ANIMATED"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_animated"
+

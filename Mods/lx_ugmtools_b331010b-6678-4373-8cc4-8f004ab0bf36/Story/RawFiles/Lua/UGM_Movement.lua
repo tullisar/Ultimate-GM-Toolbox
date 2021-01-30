@@ -53,7 +53,6 @@ Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", ClearPatrol)
 -- Regroup
 local function Regroup(object, event)
     if event ~= "GM_Regroup" then return end
-    ItemRemove(object)
     if target == nil then return end
     local tx, ty, tz = GetPosition(target)
     local grid = {}
@@ -80,8 +79,7 @@ local function ClassicMove(object, event)
     local closest = GetClosest(object)
     local vx,vy,vz = GetPosition(object)
     local itemPos = {x = vx, y = vy, z = vz}
-    Ext.Print(Ext.JsonStringify(itemPos))
-    ItemRemove(object)
+    --Ext.Print(Ext.JsonStringify(itemPos))
     vx, vy, vz = GetPosition(closest)
     local closestPos = {x = vx, y = vy, z = vz}
     local vector = SubtractCoordinates(itemPos, closestPos)
@@ -97,8 +95,45 @@ local function ClassicMove(object, event)
         elseif event == "GM_Move_Walk" then
             CharacterMoveToPosition(char, destination.x, destination.y, destination.z, 0, "NPC_Move_Done")
         end
-        ApplyStatus(char, "GM_MOVING", -1.0, 1)
+        if HasActiveStatus(char, "GM_MOVING") == 0 then
+            ApplyStatus(char, "GM_MOVING", -1.0, 1)
+        end
     end
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ClassicMove)
+
+local function StopMove(char, status, causee)
+    if status ~= "GM_MOVING" then return end
+    CharacterPurgeQueue(char)
+end
+
+Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", StopMove)
+
+local function MoveCompleted(object, event)
+    if event ~= "NPC_Move_Done" then return end
+    RemoveStatus(object, "GM_MOVING")
+end
+
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", MoveCompleted)
+
+-- Follow
+function FollowTarget(item, event)
+    if event ~= "GM_Start_Follow" then return end
+    if target == nil then print("No target!"); return end
+    for char,x in pairs(selected) do
+        Osi.ProcCharacterFollowCharacter(char, target)
+        ApplyStatus(char, "GM_FOLLOW", -1.0, 1)
+        RemoveStatus(char, PersistentVars.selectType.current)
+    end
+end
+
+Ext.RegisterOsirisListener("StoryEvent", 2, "before", FollowTarget)
+
+local function StopFollow(char, status, causee)
+    if status ~= "GM_FOLLOW" then return end
+    Osi.ProcCharacterStopFollow(char)
+    CharacterPurgeQueue(char)
+end
+
+Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", StopFollow)

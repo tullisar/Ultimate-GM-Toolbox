@@ -107,10 +107,10 @@ ApplyStatus(_Char, "GM_TARGETED", -1.0, 1);
 // THEN
 // ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
 
-IF
-StoryEvent((CHARACTERGUID)_Char, "GM_Unselect")
-THEN
-RemoveStatus(_Char, "GM_SELECTED");
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Unselect")
+// THEN
+// RemoveStatus(_Char, "GM_SELECTED");
 
 IF
 CharacterStatusApplied(_Char, "GM_SELECTED", _Cause)
@@ -118,48 +118,65 @@ THEN
 DB_GM_Selection(_Char);
 
 IF
-CharacterStatusRemoved(_Char, "GM_SELECTED", _Cause)
-AND
-DB_GM_Lock_Activated(_Lock)
+CharacterStatusApplied(_Char, "GM_SELECTED_DISCREET", _Cause)
 THEN
-NOT DB_GM_Selection(_Char);
-ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
+DB_GM_Selection(_Char);
+
+// IF
+// CharacterStatusRemoved(_Char, "GM_SELECTED", _Cause)
+// AND
+// DB_GM_Lock_Activated(_Lock)
+// THEN
+// NOT DB_GM_Selection(_Char);
+// ApplyStatus(_Char, "GM_SELECTED", -1.0, 1);
 
 IF
 CharacterStatusRemoved(_Char, "GM_SELECTED", _Cause)
+// AND
+// NOT DB_GM_Lock_Activated(_)
 AND
-NOT DB_GM_Lock_Activated(_)
+DB_GM_Selection(_Char)
 THEN
 NOT DB_GM_Selection(_Char);
+
+IF
+CharacterStatusRemoved(_Char, "GM_SELECTED_DISCREET", _Cause)
+// AND
+// NOT DB_GM_Lock_Activated(_)
+AND
+DB_GM_Selection(_Char)
+THEN
+NOT DB_GM_Selection(_Char);
+
 
 // Selection types
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Select_Activated")
-AND
-NOT DB_Select_Deactivated_Only(_)
-THEN
-DB_Select_Activated_Only(1);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Select_Activated")
+// AND
+// NOT DB_Select_Deactivated_Only(_)
+// THEN
+// DB_Select_Activated_Only(1);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Select_Deactivated")
-AND
-NOT DB_Select_Activated_Only(_)
-THEN
-DB_Select_Deactivated_Only(1);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Select_Deactivated")
+// AND
+// NOT DB_Select_Activated_Only(_)
+// THEN
+// DB_Select_Deactivated_Only(1);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
-AND
-DB_Select_Deactivated_Only(_Lock)
-THEN
-NOT DB_Select_Deactivated_Only(_Lock);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
+// AND
+// DB_Select_Deactivated_Only(_Lock)
+// THEN
+// NOT DB_Select_Deactivated_Only(_Lock);
 
-IF
-StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
-AND
-DB_Select_Activated_Only(_Lock)
-THEN
-NOT DB_Select_Activated_Only(_Lock);
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Select_All_Types")
+// AND
+// DB_Select_Activated_Only(_Lock)
+// THEN
+// NOT DB_Select_Activated_Only(_Lock);
 
 //Delete objects if there is no NPC selected
 IF

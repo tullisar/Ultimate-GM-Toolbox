@@ -1,9 +1,15 @@
 local function RegenerateMapShroud()
-    for x=0,1000,1 do
-        for y=0,1000,1 do
-            Ext.UpdateShroud(x, y, "Shroud", 0)
+    local grid = Ext.GetAiGrid()
+    local scale = grid.GridScale / 0.125
+    local minX, maxX = grid.OffsetX, grid.OffsetX + grid.Width - scale
+    local minZ, maxZ = grid.OffsetZ, grid.OffsetZ + grid.Height - scale
+    local x, z
+
+    for x=minX,maxX,grid.GridScale do
+        for z=minZ,maxZ,grid.GridScale do
+            Ext.UpdateShroud(x, z, "Shroud", 0)
         end
-	end
+    end
 	print("Changed shroud")
 end
 
