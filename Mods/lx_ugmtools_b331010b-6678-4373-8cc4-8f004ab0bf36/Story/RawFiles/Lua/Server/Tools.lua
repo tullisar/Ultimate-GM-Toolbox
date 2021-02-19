@@ -162,6 +162,27 @@ local function ManagePlayable(item, event)
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManagePlayable)
+
+function Respec()
+    for character,x in pairs(selected) do
+        if not Ext.GetCharacter(character).IsPlayer then return end
+        for i,attr in pairs(attributes) do
+            local basePoints = math.floor(Ext.GetCharacter(character).Stats["Base"..attr] - NRD_CharacterGetPermanentBoostInt(character, attr) - Ext.ExtraData.AttributeBaseValue)
+            NRD_PlayerSetBaseAttribute(character, attr, Ext.ExtraData.AttributeBaseValue)
+            CharacterAddAttributePoints(character, basePoints)
+        end
+        for i,ab in pairs(abilities) do
+            local basePoints = math.floor(CharacterGetBaseAbility(character, ab) - NRD_CharacterGetPermanentBoostInt(character, ab))
+            NRD_PlayerSetBaseAbility(character, ab, 0)
+            CharacterAddAbilityPoint(basePoints)
+        end
+        for i,civ in pairs(civilAbilities) do
+            local basePoints = math.floor(CharacterGetBaseAbility(character, civ) - NRD_CharacterGetPermanentBoostInt(character, civ))
+            NRD_PlayerSetBaseAbility(character, civ, 0)
+            CharacterAddAbilityPoint(basePoints)
+        end
+    end
+end
  
 function UGM_ApplyStatus(status, duration)
     if duration ~= -1 then duration = duration * 6.0 end

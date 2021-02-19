@@ -55,7 +55,7 @@ end
 Ext.RegisterNetListener("UGM_QuickSelection", BarkOnClick)
 
 -- Anim feature
-local function StartAnimations(char, animations)
+function StartAnimations(char, animations)
     SetVarString(char, "UGM_Animations", Ext.JsonStringify(animations))
     SetVarString(char, "UGM_AnimType", "Normal")
     PersistentVars[currentLevel].anims[char] = animations
@@ -63,7 +63,7 @@ local function StartAnimations(char, animations)
     TimerLaunch("UGM_Timer_Anim_"..char, math.random(5, 10)*1000)
 end
 
-local function StartAnimLoop(char, animation)
+function StartAnimLoop(char, animation)
     SetVarString(char, "UGM_Animations", Ext.JsonStringify({animation}))
     SetVarString(char, "UGM_AnimType", "Loop")
     PersistentVars[currentLevel].animLoop[char] = animation

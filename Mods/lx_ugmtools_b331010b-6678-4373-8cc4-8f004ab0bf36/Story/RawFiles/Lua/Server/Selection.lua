@@ -45,7 +45,7 @@ end
 
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "after", RegisterSelection)
 
-local function RemoveFromSelection(char, status, causee)
+local function RemoveFromSelection(char, status, ...)
     if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
         if quickSelection == nil then quickSelection = "" end
         selected[char] = nil
@@ -140,7 +140,7 @@ local function QuickSelect(call, netID)
             RemoveStatus(char.MyGuid, PersistentVars.selectType.current)
         else
             RemoveStatus(char.MyGuid, PersistentVars.targetType.current)
-            ApplyStatus(char.MyGuid, PersistentVars.selectType.current, -1.0, 1)
+            AddToSelection(char.MyGuid, "GM_Select")
         end
     end
 end

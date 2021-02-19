@@ -1,5 +1,3 @@
-Ext.Require("UGM_Selection.lua")
-
 local function RegisterPatrolBeacon(object, event)
     if event ~= "GM_Place_Patrol_Beacon" then return end
     for char, status in pairs(selected) do

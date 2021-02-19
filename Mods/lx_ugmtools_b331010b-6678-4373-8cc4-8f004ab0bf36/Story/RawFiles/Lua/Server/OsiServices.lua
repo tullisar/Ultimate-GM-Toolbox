@@ -18,7 +18,7 @@ function CharacterSetAttribute(attribute, value)
     end
 end
 
-function CharacterAddAttibutePoints(amount)
+function CharacterAddAttributePoints(amount)
     for char,x in pairs(selected) do
         CharacterAddAttributePoint(char, tonumber(amount))
     end

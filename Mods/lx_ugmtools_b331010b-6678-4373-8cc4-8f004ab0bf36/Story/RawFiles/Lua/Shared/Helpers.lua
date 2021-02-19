@@ -63,3 +63,57 @@ function string.startswith(String,Start)
         return int+2*half
     end
  end
+
+attributes = { 
+    "Strength",
+    "Finesse",
+    "Intelligence",
+    "Constitution",
+    "Memory",
+    "Wits"
+}
+
+abilities = {
+    "AirSpecialist",
+    "DualWielding",
+    "EarthSpecialist",
+    "FireSpecialist",
+    "Leadership",
+    "MagicArmorMastery",
+    "Necromancy",
+    "Perseverance",
+    "PhysicalArmorMastery",
+    "Polymorph",
+    "Ranged",
+    "RangerLore",
+    "Reflection",
+    "Reflexes",
+    "RogueLore",
+    "Runecrafting",
+    "Shield",
+    "SingleHanded",
+    "Sourcery",
+    "Summoning",
+    "TwoHanded",
+    "VitalityMastery",
+    "Wand",
+    "WarriorLore",
+    "WaterSpecialist",
+}
+
+civilAbilities = {
+    "Barter",
+    "Loremaster",
+    "Luck",
+    "Persuasion",
+    "Pickpocket",
+    "Reason",
+    "Repair",
+    "Sneaking",
+    "Telekinesis",
+    "Thievery",
+    "Intimidate",
+    "Brewmaster",
+    "Charm",
+    "Crafting",
+}
