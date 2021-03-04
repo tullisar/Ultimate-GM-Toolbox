@@ -83,7 +83,6 @@ end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManageLock)
 
-
 -- Target feature
 local function Targeting(char, event)
     if event ~= "GM_Target_Apply" then return end
@@ -110,7 +109,13 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", TargetingStatu
 local function RemoveTargeting(char, status, causee)
     if status ~= PersistentVars.targetType.current then return end
     if target ~= nil then
-        print("Untargeted "..Ext.GetCharacter(target).DisplayName)
+        local name = ""
+        local b,err = xpcall(function()
+            name = Ext.GetCharacter(target).DisplayName
+        end, debug.traceback)
+        if name ~= "" then
+            print("Untargeted "..name)
+        end
     end
     if target == char then
         target = nil
@@ -158,7 +163,9 @@ Ext.RegisterNetListener("UGM_QuickDeselection", QuickDeselect)
 function ClearSelectionAndTarget()
     if not PersistentVars.lock then
         for char,x in pairs(selected) do
-            if GetUUID(char) ~= quickSelection then
+            local qs = ""
+            if quickSelection ~= nil then qs = quickSelection end
+            if GetUUID(char) ~= GetUUID(qs) then
                 RemoveStatus(char, PersistentVars.selectType.current)
             end
         end

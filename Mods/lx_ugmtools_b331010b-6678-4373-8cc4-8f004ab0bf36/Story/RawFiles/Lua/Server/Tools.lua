@@ -109,6 +109,7 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", CopyRemoveStatus)
 local function TransformCharacter(item, event)
     if event ~= "GM_Transform" or target == nil then return end
     for char,x in pairs(selected) do
+        selected[char] = nil -- Since the template change, the GUID have to be removed manually
         CharacterTransformAppearanceTo(char, target, 0, 1)
     end
     ClearSelectionAndTarget()

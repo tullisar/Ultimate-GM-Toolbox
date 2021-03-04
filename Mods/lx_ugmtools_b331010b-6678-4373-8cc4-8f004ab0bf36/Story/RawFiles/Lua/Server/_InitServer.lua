@@ -19,6 +19,8 @@ local function RestoreCharactersScaling()
     for character, scale in pairs(PersistentVars[currentLevel].scale) do
         if ObjectExists(character) == 1 and ObjectIsCharacter(character) == 1 then
             Ext.BroadcastMessage("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(scale), nil)
+        else
+            PersistentVars[currentLevel].scale[character] = nil
         end
     end
 end
@@ -52,6 +54,8 @@ local function GetCurrentLevel(map, isEditor)
         PersistentVars[currentLevel].animLoop = {}
     end
     RestoreCharactersAnimations()
+    local host = CharacterGetHostCharacter()
+    Ext.PostMessageToClient(host, "UGM_ReplaceFX", "")
 end
 
 Ext.RegisterOsirisListener("GameStarted", 2, "before", GetCurrentLevel)

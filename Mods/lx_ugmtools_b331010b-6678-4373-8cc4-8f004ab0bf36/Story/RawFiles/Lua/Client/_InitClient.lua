@@ -1,11 +1,17 @@
 Ext.Require("Client/ShroudManager.lua")
 Ext.Require("Client/SessionLoaded.lua")
+Ext.Require("Client/FXReplacements.lua")
 Ext.AddPathOverride("Public/Game/GUI/GM/GMPanelHUD.swf", "Public/lx_ugmtools_b331010b-6678-4373-8cc4-8f004ab0bf36/Game/GUI/GM/GMPanelHUD.swf")
 
 local function SetCharacterScale(call, data)
     local character = string.gsub(data, "%:.*", "")
     local value = string.gsub(data, ".*%:", "")
-    local char = Ext.GetCharacter(tonumber(character))
+    local char = nil
+    local b,err = xpcall(function()
+        char = Ext.GetCharacter(tonumber(character))
+        local check = char.DisplayName
+    end, debug.traceback)
+    if not b then return end
     if char == nil then return end
     char:SetScale(tonumber(value))
     -- print("Set scale to",value)
@@ -92,9 +98,9 @@ local function UI_TopbarFunctions(ui, call, ...)
     elseif call == "buttonCallback_54" then
         Ext.Print("Start follow")
         Ext.PostMessageToServer("UGM_Hotbar_StartFollow", "")
-    elseif call == "buttonCallback_55" then
-        Ext.Print("")
-        monster:ExternalInterfaceCall("selectForSpawn", itemFunctions["22- Move to position (Run)"])
+    -- elseif call == "buttonCallback_55" then
+    --     Ext.Print("")
+    --     monster:ExternalInterfaceCall("startDragging", itemFunctions["22- Move to position (Run)"], 1)
     end
 end
 

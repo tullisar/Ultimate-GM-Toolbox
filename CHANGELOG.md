@@ -1,5 +1,13 @@
 GM Tools : Ultimate GM Toolbox Changelog
 =======
+# 0.10.9.15
+Fixes
+* Selection isn't bugged after using Transform tool anymore
+* The whole selection system isn't broken anymore after deleting a targeted character
+
+# 0.10.8.13
+New
+* Selected and Targeted now have a new FX that is visible by the GM only.
 
 # 0.10.7.12
 New
