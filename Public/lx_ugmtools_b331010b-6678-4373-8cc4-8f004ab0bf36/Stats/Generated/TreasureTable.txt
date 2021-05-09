@@ -1,0 +1,670 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+new treasuretable "ST_MageArmorCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "MageLowerBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "MageBoots",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "MageGloves",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "MageHelmet",1,1,0,0,0,0,0,0
+new treasuretable "ST_MageArmorUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "MageLowerBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "MageBoots",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "MageGloves",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "MageHelmet",1,0,1,0,0,0,0,0
+new treasuretable "ST_MageArmorRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "MageLowerBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "MageBoots",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "MageGloves",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "MageHelmet",1,0,0,1,0,0,0,0
+new treasuretable "ST_MageArmorEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "MageLowerBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "MageBoots",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "MageGloves",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "MageHelmet",1,0,0,0,1,0,0,0
+new treasuretable "ST_MageArmorLegendary"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "MageLowerBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "MageBoots",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "MageGloves",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "MageHelmet",1,0,0,0,0,1,0,0
+new treasuretable "ST_MageArmorDivine"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "MageUpperBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "MageLowerBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "MageBoots",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "MageGloves",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "MageHelmet",1,0,0,0,0,0,1,0
+
+
+new treasuretable "ST_HeavyArmorCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyBoots",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyGloves",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyHelmet",1,1,0,0,0,0,0,0
+new treasuretable "ST_HeavyArmorUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyBoots",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyGloves",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "HeavyHelmet",1,0,1,0,0,0,0,0
+new treasuretable "ST_HeavyArmorRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "HeavyBoots",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "HeavyGloves",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "HeavyHelmet",1,0,0,1,0,0,0,0
+new treasuretable "ST_HeavyArmorEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "HeavyBoots",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "HeavyGloves",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "HeavyHelmet",1,0,0,0,1,0,0,0
+new treasuretable "ST_HeavyArmorLegendary"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "HeavyBoots",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "HeavyGloves",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "HeavyHelmet",1,0,0,0,0,1,0,0
+new treasuretable "ST_HeavyArmorDivine"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "HeavyUpperBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "HeavyLowerBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "HeavyBoots",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "HeavyGloves",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "HeavyHelmet",1,0,0,0,0,0,1,0
+
+
+new treasuretable "ST_LightArmorCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,1,0,0,0,0,0,0
+new treasuretable "ST_LightArmorUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,1,0,0,0,0,0
+new treasuretable "ST_LightArmorRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,1,0,0,0,0
+new treasuretable "ST_LightArmorEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,1,0,0,0
+new treasuretable "ST_LightArmorLegendary"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,0,1,0,0
+new treasuretable "ST_LightArmorDivine"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,0,0,1,0
+
+
+new treasuretable "ST_RandomArmorCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,1,0,0,0,0,0,0
+object category "MageUpperBody",1,1,0,0,0,0,0,0
+object category "HeavyUpperBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,1,0,0,0,0,0,0
+object category "MageLowerBody",1,1,0,0,0,0,0,0
+object category "HeavyLowerBody",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,1,0,0,0,0,0,0
+object category "MageBoots",1,1,0,0,0,0,0,0
+object category "HeavyBoots",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,1,0,0,0,0,0,0
+object category "MageGloves",1,1,0,0,0,0,0,0
+object category "HeavyGloves",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,1,0,0,0,0,0,0
+object category "MageHelmet",1,1,0,0,0,0,0,0
+object category "HeavyHelmet",1,1,0,0,0,0,0,0
+new treasuretable "ST_RandomArmorUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,1,0,0,0,0,0
+object category "MageUpperBody",1,0,1,0,0,0,0,0
+object category "HeavyUpperBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,1,0,0,0,0,0
+object category "MageLowerBody",1,0,1,0,0,0,0,0
+object category "HeavyLowerBody",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,1,0,0,0,0,0
+object category "MageBoots",1,0,1,0,0,0,0,0
+object category "HeavyBoots",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,1,0,0,0,0,0
+object category "MageGloves",1,0,1,0,0,0,0,0
+object category "HeavyGloves",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,1,0,0,0,0,0
+object category "MageHelmet",1,0,1,0,0,0,0,0
+object category "HeavyHelmet",1,0,1,0,0,0,0,0
+new treasuretable "ST_RandomArmorRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,1,0,0,0,0
+object category "MageUpperBody",1,0,0,1,0,0,0,0
+object category "HeavyUpperBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,1,0,0,0,0
+object category "MageLowerBody",1,0,0,1,0,0,0,0
+object category "HeavyLowerBody",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,1,0,0,0,0
+object category "MageBoots",1,0,0,1,0,0,0,0
+object category "HeavyBoots",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,1,0,0,0,0
+object category "MageGloves",1,0,0,1,0,0,0,0
+object category "HeavyGloves",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,1,0,0,0,0
+object category "MageHelmet",1,0,0,1,0,0,0,0
+object category "HeavyHelmet",1,0,0,1,0,0,0,0
+new treasuretable "ST_RandomArmorEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,1,0,0,0
+object category "MageUpperBody",1,0,0,0,1,0,0,0
+object category "HeavyUpperBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,1,0,0,0
+object category "MageLowerBody",1,0,0,0,1,0,0,0
+object category "HeavyLowerBody",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,1,0,0,0
+object category "MageBoots",1,0,0,0,1,0,0,0
+object category "HeavyBoots",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,1,0,0,0
+object category "MageGloves",1,0,0,0,1,0,0,0
+object category "HeavyGloves",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,1,0,0,0
+object category "MageHelmet",1,0,0,0,1,0,0,0
+object category "HeavyHelmet",1,0,0,0,1,0,0,0
+new treasuretable "ST_RandomArmorLegendary"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,0,1,0,0
+object category "MageUpperBody",1,0,0,0,0,1,0,0
+object category "HeavyUpperBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,0,1,0,0
+object category "MageLowerBody",1,0,0,0,0,1,0,0
+object category "HeavyLowerBody",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,0,1,0,0
+object category "MageBoots",1,0,0,0,0,1,0,0
+object category "HeavyBoots",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,0,1,0,0
+object category "MageGloves",1,0,0,0,0,1,0,0
+object category "HeavyGloves",1,0,0,0,0,1,0,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,0,1,0,0
+object category "MageHelmet",1,0,0,0,0,1,0,0
+object category "HeavyHelmet",1,0,0,0,0,1,0,0
+new treasuretable "ST_RandomArmorDivine"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "LightUpperBody",1,0,0,0,0,0,1,0
+object category "MageUpperBody",1,0,0,0,0,0,1,0
+object category "HeavyUpperBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightLowerBody",1,0,0,0,0,0,1,0
+object category "MageLowerBody",1,0,0,0,0,0,1,0
+object category "HeavyLowerBody",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightBoots",1,0,0,0,0,0,1,0
+object category "MageBoots",1,0,0,0,0,0,1,0
+object category "HeavyBoots",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightGloves",1,0,0,0,0,0,1,0
+object category "MageGloves",1,0,0,0,0,0,1,0
+object category "HeavyGloves",1,0,0,0,0,0,1,0
+new subtable "1,1"
+object category "LightHelmet",1,0,0,0,0,0,1,0
+object category "MageHelmet",1,0,0,0,0,0,1,0
+object category "HeavyHelmet",1,0,0,0,0,0,1,0
+EndLevel "40"
+
+new treasuretable "ST_JewelsCommon"
+IgnoreLevelDiff 1
+new subtable "-2"
+StartLevel "1"
+EndLevel "40"
+object category "Ring",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "Belt",1,1,0,0,0,0,0,0
+new subtable "1,1"
+object category "Amulet",1,1,0,0,0,0,0,0
+new treasuretable "ST_JewelsUncommon"
+IgnoreLevelDiff 1
+new subtable "-2"
+StartLevel "1"
+EndLevel "40"
+object category "Ring",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "Belt",1,0,1,0,0,0,0,0
+new subtable "1,1"
+object category "Amulet",1,0,1,0,0,0,0,0
+new treasuretable "ST_JewelsRare"
+IgnoreLevelDiff 1
+new subtable "-2"
+StartLevel "1"
+EndLevel "40"
+object category "Ring",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "Belt",1,0,0,1,0,0,0,0
+new subtable "1,1"
+object category "Amulet",1,0,0,1,0,0,0,0
+new treasuretable "ST_JewelsEpic"
+IgnoreLevelDiff 1
+new subtable "-2"
+StartLevel "1"
+EndLevel "40"
+object category "Ring",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "Belt",1,0,0,0,1,0,0,0
+new subtable "1,1"
+object category "Amulet",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_StaffCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "StaffFire",1,1,0,0,0,0,0,0
+object category "StaffWater",1,1,0,0,0,0,0,0
+object category "StaffAir",1,1,0,0,0,0,0,0
+object category "StaffPoison",1,1,0,0,0,0,0,0
+new treasuretable "ST_StaffUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "StaffFire",1,0,1,0,0,0,0,0
+object category "StaffWater",1,0,1,0,0,0,0,0
+object category "StaffAir",1,0,1,0,0,0,0,0
+object category "StaffPoison",1,0,1,0,0,0,0,0
+new treasuretable "ST_StaffRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "StaffFire",1,0,0,1,0,0,0,0
+object category "StaffWater",1,0,0,1,0,0,0,0
+object category "StaffAir",1,0,0,1,0,0,0,0
+object category "StaffPoison",1,0,0,1,0,0,0,0
+new treasuretable "ST_StaffEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "StaffFire",1,0,0,0,1,0,0,0
+object category "StaffWater",1,0,0,0,1,0,0,0
+object category "StaffAir",1,0,0,0,1,0,0,0
+object category "StaffPoison",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_RangedCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Crossbow",1,1,0,0,0,0,0,0
+object category "Bow",1,1,0,0,0,0,0,0
+new treasuretable "ST_RangedUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Crossbow",1,0,1,0,0,0,0,0
+object category "Bow",1,0,1,0,0,0,0,0
+new treasuretable "ST_RangedRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Crossbow",1,0,0,1,0,0,0,0
+object category "Bow",1,0,0,1,0,0,0,0
+new treasuretable "ST_RangedEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Crossbow",1,0,0,0,1,0,0,0
+object category "Bow",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_WandCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "WandFire",1,1,0,0,0,0,0,0
+object category "WandWater",1,1,0,0,0,0,0,0
+object category "WandAir",1,1,0,0,0,0,0,0
+object category "WandPoison",1,1,0,0,0,0,0,0
+new treasuretable "ST_WandUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "WandFire",1,0,1,0,0,0,0,0
+object category "WandWater",1,0,1,0,0,0,0,0
+object category "WandAir",1,0,1,0,0,0,0,0
+object category "WandPoison",1,0,1,0,0,0,0,0
+new treasuretable "ST_WandRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "WandFire",1,0,0,1,0,0,0,0
+object category "WandWater",1,0,0,1,0,0,0,0
+object category "WandAir",1,0,0,1,0,0,0,0
+object category "WandPoison",1,0,0,1,0,0,0,0
+new treasuretable "ST_WandEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "WandFire",1,0,0,0,1,0,0,0
+object category "WandWater",1,0,0,0,1,0,0,0
+object category "WandAir",1,0,0,0,1,0,0,0
+object category "WandPoison",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_OneHandedCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Sword",1,1,0,0,0,0,0,0
+object category "Axe",1,1,0,0,0,0,0,0
+object category "Club",1,1,0,0,0,0,0,0
+new treasuretable "ST_OneHandedUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Sword",1,0,1,0,0,0,0,0
+object category "Axe",1,0,1,0,0,0,0,0
+object category "Club",1,0,1,0,0,0,0,0
+new treasuretable "ST_OneHandedRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Sword",1,0,0,1,0,0,0,0
+object category "Axe",1,0,0,1,0,0,0,0
+object category "Club",1,0,0,1,0,0,0,0
+new treasuretable "ST_OneHandedEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Sword",1,0,0,0,1,0,0,0
+object category "Axe",1,0,0,0,0,1,0,0
+object category "Club",1,0,0,0,0,1,0,0
+
+new treasuretable "ST_DaggerCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Dagger",1,1,0,0,0,0,0,0
+new treasuretable "ST_DaggerUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Dagger",1,0,1,0,0,0,0,0
+new treasuretable "ST_DaggerRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Dagger",1,0,0,1,0,0,0,0
+new treasuretable "ST_DaggerEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Dagger",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_TwoHandedCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "TwoHandedAxe",1,1,0,0,0,0,0,0
+object category "TwoHandedSword",1,1,0,0,0,0,0,0
+object category "TwoHandedMace",1,1,0,0,0,0,0,0
+object category "Spear",1,1,0,0,0,0,0,0
+new treasuretable "ST_TwoHandedUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "TwoHandedAxe",1,0,1,0,0,0,0,0
+object category "TwoHandedSword",1,0,1,0,0,0,0,0
+object category "TwoHandedMace",1,0,1,0,0,0,0,0
+object category "Spear",1,0,1,0,0,0,0,0
+new treasuretable "ST_TwoHandedRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "TwoHandedAxe",1,0,0,1,0,0,0,0
+object category "TwoHandedSword",1,0,0,1,0,0,0,0
+object category "TwoHandedMace",1,0,0,1,0,0,0,0
+object category "Spear",1,0,0,1,0,0,0,0
+new treasuretable "ST_TwoHandedEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "TwoHandedAxe",1,0,0,0,1,0,0,0
+object category "TwoHandedSword",1,0,0,0,1,0,0,0
+object category "TwoHandedMace",1,0,0,0,1,0,0,0
+object category "Spear",1,0,0,0,1,0,0,0
+
+new treasuretable "ST_ShieldCommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Shield",1,1,0,0,0,0,0,0
+new treasuretable "ST_ShieldUncommon"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Shield",1,0,1,0,0,0,0,0
+new treasuretable "ST_ShieldRare"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Shield",1,0,0,1,0,0,0,0
+new treasuretable "ST_ShieldEpic"
+IgnoreLevelDiff 1
+new subtable "1,1"
+StartLevel "1"
+EndLevel "40"
+object category "Shield",1,0,0,0,1,0,0,0
+

@@ -1,0 +1,18 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//RandomizeVisuals
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_RandomizeVisuals_5a2695a6-06aa-4207-ad9b-17861f6a6259")
+	THEN
+		ItemEvent(__Me, "GM_RandomizeVisuals")
+	ENDIF

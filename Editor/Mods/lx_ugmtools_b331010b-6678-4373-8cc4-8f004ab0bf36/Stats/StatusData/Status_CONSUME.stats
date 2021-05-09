@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e2a8d59b-0e34-4a7c-bf5f-db7a2bb34cde">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_SELECTED" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="S" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="statIcons_ImprovedInitiative" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Selected" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_selected" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_PATROLING" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value=" " />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Source_BanishSummon" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Patroling" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_patroling" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_TARGETED" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value=" Targeted (GM)" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Action_AttackGround" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Targeted" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_targeted" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_FOLLOW" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value=" " />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Action_Flee" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Follow" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_follow" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_MOVING" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value=" " />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_The_Pawn" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Moving" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_moving" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_STORYFREEZE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Story Frozen" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="The game is paused. Please listen to the GM !" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Source_Silence_Source" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="StoryFreeze" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_SELECTED_DISCREET" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_selected" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_TARGETED_DISCREET" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_targeted" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GM_ANIMATED" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="stack_animated" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,27 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//Unsheathe
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Unsheathe")
+// AND
+// DB_GM_Selection(_Char)
+// THEN
+// ApplyStatus(_Char, "UNSHEATHED", -1.0, 1);
+// RemoveStatus(_Char, "GM_SELECTED");
+// ItemRemove(_Item);
+
+// //Sheathe
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Sheathe")
+// AND
+// DB_GM_Selection(_Char)
+// THEN
+// RemoveStatus(_Char, "UNSHEATHED");
+// RemoveStatus(_Char, "GM_SELECTED");
+// ItemRemove(_Item);
+EXITSECTION
+
+ENDEXITSECTION

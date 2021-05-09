@@ -1,0 +1,61 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_MakePlayer")
+// AND
+// DB_GM_Selection(_Npc)
+// THEN
+// CharacterMakePlayer(_Npc);
+// DB_IsPlayer(_Npc);
+// RemoveStatus(_Npc, "GM_SELECTED");
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_MakeNPC")
+// AND
+// DB_GM_Selection(_Char)
+// THEN
+// CharacterMakeNPC(_Char);
+// NOT DB_IsPlayer(_Char);
+// RemoveStatus(_Char, "GM_SELECTED");
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_MakeFollower")
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// DB_GM_Targeted(_Target)
+// THEN
+// CharacterAddToPlayerCharacter(_Char, _Target);
+// RemoveStatus(_Char, "GM_SELECTED");
+// RemoveStatus(_Target, "GM_TARGETED");
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_UnmakeFollower")
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// CharacterGetOwner(_Char, _Owner)
+// THEN
+// CharacterRemoveFromPlayerCharacter(_Char, _Owner);
+// RemoveStatus(_Char, "GM_SELECTED");
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_AssignPlayer")
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// DB_GM_Targeted(_Player)
+// AND
+// CharacterGetReservedUserID(_Player, _User)
+// THEN
+// CharacterAssignToUser(_User, _Char);
+// RemoveStatus(_Char, "GM_SELECTED");
+// RemoveStatus(_Player, "GM_TARGETED");
+
+
+EXITSECTION
+
+ENDEXITSECTION

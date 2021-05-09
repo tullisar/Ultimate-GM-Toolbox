@@ -1,0 +1,134 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// /////////// PATROLING ///////////
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Patrol_Peaceful")
+// AND
+// DB_GM_Selection(_Char)
+// AND
+// GetPosition(_Char, _InitPosX, _InitPosY, _InitPosZ)
+// AND
+// GetPosition(_Item, _PosX, _PosY, _PosZ)
+// THEN
+// DB_GM_Patrols(_Char, _InitPosX, _InitPosY, _InitPosZ);
+// ApplyStatus(_Char, "GM_PATROLING", -1.0, 1);
+// RemoveStatus(_Char, "GM_SELECTED");
+// CharacterMoveToPosition(_Char, _PosX, _PosY, _PosZ, 0, "NPC_Patrol_Reached");
+// ItemRemove(_Item);
+
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "NPC_Patrol_Reached")
+// AND
+// GetPosition(_Char, _InitPosX, _InitPosY, _InitPosZ)
+// AND
+// DB_GM_Patrols(_Char, _PosX, _PosY, _PosZ)
+// THEN
+// NOT DB_GM_Patrols(_Char, _PosX, _PosY, _PosZ);
+// CharacterMoveToPosition(_Char, _PosX, _PosY, _PosZ, 0, "NPC_Patrol_Reached");
+// DB_GM_Patrols(_Char, _InitPosX, _InitPosY, _InitPosZ);
+
+// //// Clear ////
+// IF
+// CharacterStatusRemoved(_Char, "GM_PATROLING", _Cause)
+// AND
+// DB_GM_Patrols(_Char, _PosX, _PosY, _PosZ)
+// THEN
+// NOT DB_GM_Patrols(_Char, _PosX, _PosY, _PosZ);
+// CharacterPurgeQueue(_Char);
+
+// IF
+// CharacterStatusRemoved(_Char, "GM_PATROLING", _Cause)
+// AND
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z)
+// THEN
+// NOT DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z);
+// NOT DB_GM_Temp_Beacons(_Char, _X, _Y, _Z);
+// CharacterPurgeQueue(_Char);
+
+// IF
+// CharacterStatusRemoved(_Char, "GM_PATROLING", _Cause)
+// THEN
+// CharacterPurgeQueue(_Char);
+
+// IF
+// CharacterStatusRemoved(_Char, "GM_PATROLING", _Cause)
+// AND
+// DB_GM_Temp_Beacons(_Char, _X, _Y, _Z)
+// THEN
+// NOT DB_GM_Temp_Beacons(_Char, _X, _Y, _Z);
+// CharacterPurgeQueue(_Char);
+
+// /// Multipatrol ///
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Place_Patrol_Beacon")
+// AND
+// DB_GM_Targeted(_Char)
+// AND
+// GetPosition(_Item, _X, _Y, _Z)
+// THEN
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z);
+// ItemRemove(_Item);
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Start_Multipatrol")
+// AND
+// DB_GM_Targeted(_Char)
+// AND
+// HasActiveStatus(_Char, "GM_PATROLING", 0)
+// AND
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z)
+// AND
+// QueryOnlyOnce("GM_Multipatrol_Start")
+// THEN
+// RemoveStatus(_Char, "GM_TARGETED");
+// ApplyStatus(_Char, "GM_PATROLING", -1.0);
+// CharacterMoveToPosition(_Char, _X, _Y, _Z, 0, "GM_Restart_Multipatrol");
+// SetStoryEvent(_Item, "GM_Multipatrol_Reload");
+
+// IF
+// StoryEvent((ITEMGUID)_Item, "GM_Multipatrol_Reload")
+// THEN
+// NOT DB_OnlyOnce("GM_Multipatrol_Start");
+
+
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Loop_Multipatrol")
+// AND
+// DB_GM_Temp_Beacons(_Char, _X, _Y, _Z)
+// THEN
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z);
+// NOT DB_GM_Temp_Beacons(_Char, _X, _Y, _Z);
+// SetStoryEvent(_Char, "GM_Restart_Multipatrol");
+
+
+// IF
+// StoryEvent((CHARACTERGUID)_Char, "GM_Restart_Multipatrol")
+// AND
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z)
+// THEN
+// NOT DB_OnlyOnce("GM_Multipatrol");
+// DB_GM_Temp_Beacons(_Char, _X, _Y, _Z);
+// NOT DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z);
+// CharacterMoveToPosition(_Char, _X, _Y, _Z, 0, "GM_Loop_Multipatrol");
+
+
+// /*
+// IF
+// DB_GM_Patrol_Started(1)
+// AND
+// DB_GM_Temp_Pos(_Char, _X, _Y, _Z)
+// THEN
+// DB_GM_Patrol_Beacons(_Char, _X, _Y, _Z);
+// NOT DB_GM_Temp_Pos(_Char, _X, _Y, _Z);
+// NOT DB_GM_Patrol_Started(1);
+// */
+
+
+
+EXITSECTION
+
+ENDEXITSECTION

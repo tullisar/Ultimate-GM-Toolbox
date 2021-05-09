@@ -1,0 +1,18 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Transform
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Transform_Char_3706eb9d-ed43-49a6-bf64-d16adc712c38")
+	THEN
+		ItemEvent(__Me, "GM_Transform")
+	ENDIF

@@ -1,0 +1,34 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Start simple patrol
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Patrol_Peaceful_e61abf60-cc83-453d-a4b6-38785ad6b847")
+	THEN
+		ItemEvent(__Me, "GM_Patrol_Peaceful")
+	ENDIF
+
+	//Place beacon
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Patrol_Beacon_4b89e78e-69a6-44fc-a43c-43508e792ab0")
+	THEN
+		ItemEvent(__Me, "GM_Place_Patrol_Beacon")
+	ENDIF
+	
+	//Start multipoint patroling
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Patrol_Multi_b37f58df-9842-4c1a-a19d-232fad45c86a")
+	THEN
+		ItemEvent(__Me, "GM_Start_Multipatrol")
+	ENDIF

@@ -1,0 +1,11 @@
+new entry "LX_KEEPPOSITION"
+type "StatusData"
+data "StatusType" "STANCE"
+data "ForGameMaster" "Yes"
+data "InitiateCombat" "No"
+data "DisplayName" "LX_KEEPPOSITION_DisplayName"
+data "DisplayNameRef" "Keep Position"
+data "Icon" "statIcons_Crippled"
+data "StatsId" "stats_LX_KeepPosition"
+data "StackId" "stack_KeepPosition"
+

@@ -1,0 +1,26 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Activate
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Activate_01369aee-e680-4a7f-b588-2e9d5b1b5547")
+	THEN
+		ItemEvent(__Me, "GM_Activate")
+	ENDIF
+
+	//Deactivate
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Deactivate_a6cba36b-1aab-41ce-866e-37f24b4147ce")
+	THEN
+		ItemEvent(__Me, "GM_Deactivate")
+	ENDIF

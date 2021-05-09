@@ -1,0 +1,152 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//// Mage Armor
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Armor_Mage_Common_c9b6693c-e2db-4b32-8d09-eaaff5479669")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Armor_Mage")
+	ENDIF
+	
+	//// Light Armor
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Armor_Light_Common_f8c4933b-1f27-4ace-b67b-86b1590ed488")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Armor_Light")
+	ENDIF
+	
+	//// Heavy Armor
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Armor_Heavy_Common_5a5513ee-80e0-47e3-99bd-f3be230217eb")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Armor_Heavy")
+	ENDIF
+	
+	//// Mixed Armor
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Armor_Mix_194b669e-81df-45a4-abc3-5466dd564e3c")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Armor_Mix")
+	ENDIF
+	
+	//// Jewels
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Armor_Jewels_4ba8a8a2-3e3f-44b0-a8bf-dcd80dd6fabf")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Armor_Jewels")
+	ENDIF
+	
+	//// One Handed
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_One_Handed_4fc3ea97-56c0-4244-aec5-aba839f171cc")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_OH")
+	ENDIF
+	
+	//// Dagger
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Dagger_421934fe-e2d2-4c61-b37a-f2cde0202684")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_Dagger")
+	ENDIF
+	
+	//// Wand
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Wand_9ba0a130-b736-4f88-b2b6-ea93a05b9095")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_Wand")
+	ENDIF
+	
+	//// Shield
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Shield_18fc6638-2ba0-4eff-acf4-5eab6e6b2c3f")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_Shield")
+	ENDIF
+	
+	//// Staff
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Staff_3c49f4c5-5ebc-4ef8-8f90-866c84b1f88f")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_Staff")
+	ENDIF
+	
+	//// Ranged
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Ranged_40eed031-dcd8-4b76-bb1c-7c0d3d075a6c")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_Ranged")
+	ENDIF
+	
+	//// Two Handed
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Generate_Weapon_Two_Handed_6559d2b1-81d2-45ba-9f90-6f4591a24a8c")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Generate_Weapon_TH")
+	ENDIF
+	
+	//// Rarity modifier
+	//Common
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Common_1ef69b7a-37af-4554-b9d5-0fc063ee8f8e")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Common")
+	ENDIF
+	//Uncommon
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Uncommon_c36eb2ae-71ff-418d-95bd-9194fbf25ba9")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Uncommon")
+	ENDIF
+	//Rare
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Rare_f7b8b613-0473-4911-a460-9d03932d7225")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Rare")
+	ENDIF
+	//Epic
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Epic_2aba7242-03a0-4e86-afcc-894cb7dbdb3d")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Epic")
+	ENDIF
+	/*
+	//Legendary
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Legendary_af44ce4c-852c-49d5-9342-db7952f4f695")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Legendary")
+	ENDIF
+	//Divine
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Equip_Change_Rarity_Divine_74e71c95-85c5-485d-9c0b-2c0fba51f738")
+	THEN
+		ItemEvent(__Me, "GM_Equip_Rarity_Divine")
+	ENDIF
+	*/

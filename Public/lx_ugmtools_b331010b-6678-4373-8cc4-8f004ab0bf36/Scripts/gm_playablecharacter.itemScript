@@ -1,0 +1,50 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Make Player
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_MakePlayer_1356c4d2-111d-4605-9846-af90e05e021c")
+	THEN
+		ItemEvent(__Me, "GM_MakePlayer")
+	ENDIF
+
+	//Make NPC
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_MakeNpc_1db3eed5-9e95-4b50-a93b-4fa0b539440d")
+	THEN
+		ItemEvent(__Me, "GM_MakeNPC")
+	ENDIF
+	
+	//Make follower
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_MakeFollower_79c0b620-3e73-480e-9d2c-15c718ea5361")
+	THEN
+		ItemEvent(__Me, "GM_MakeFollower")
+	ENDIF
+
+	//Follower dismiss
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_MakeFollowerDismiss_fec914e9-10a3-4a61-9a82-d4db6805a451")
+	THEN
+		ItemEvent(__Me, "GM_UnmakeFollower")
+	ENDIF
+	
+	//Assign character
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_AssignCharToUser_644c374b-b5d6-4f23-9c05-3c40a3849077")
+	THEN
+		ItemEvent(__Me, "GM_AssignPlayer")
+	ENDIF

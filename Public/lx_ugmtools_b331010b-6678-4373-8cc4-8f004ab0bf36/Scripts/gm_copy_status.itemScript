@@ -1,0 +1,25 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEMTEMPLATE: _Item
+ON
+	OnInit()
+ACTIONS
+	ItemEvent(__Me, "GM_Check")
+	//Copy status
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Copy_Status_16329f0b-a390-4e88-a075-b343109da86b")
+	THEN
+		ItemEvent(__Me, "GM_Copy_Status")
+	ENDIF
+	
+	IF "c1&c2"
+		ItemGetTemplate(__Me, _Item)
+		IsEqual(_Item, "ITEMGUID_GM_Tools_Clear_Status_5bf58686-864f-4e81-b8ca-20bc854ef04e")
+	THEN
+		ItemEvent(__Me, "GM_Clear_Status")
+	ENDIF
