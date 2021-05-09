@@ -22,11 +22,14 @@
         <field name="Name" type="NameStatObjectFieldDefinition" value="Follow" />
       </fields>
     </stat_object>
+<<<<<<< HEAD
     <stat_object is_substat="false">
       <fields>
         <field name="Name" type="NameStatObjectFieldDefinition" value="stats_LX_KeepPosition" />
         <field name="MovementSpeedBoost" type="IntegerStatObjectFieldDefinition" value="-300" />
       </fields>
     </stat_object>
+=======
+>>>>>>> da3253c611e2198f7c8ec0d6f4303f4eaf58feea
   </stat_objects>
 </stats>

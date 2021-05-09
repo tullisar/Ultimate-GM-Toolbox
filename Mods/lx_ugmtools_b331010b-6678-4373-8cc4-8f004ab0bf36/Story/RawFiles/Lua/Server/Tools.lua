@@ -151,6 +151,7 @@ local function ManagePlayable(item, event)
                 CharacterGiveSkill(char, "Shout_FollowerKeepPosition")
                 CharacterGiveSkill(target, "Shout_FollowerKeepPosition")
             end
+            CharacterAddToPlayerCharacter(char, target)
         end
     elseif event == "GM_UnmakeFollower" then
         for char,x in pairs(selected) do
@@ -160,6 +161,7 @@ local function ManagePlayable(item, event)
                 CharacterGiveSkill(char, "Shout_FollowerKeepPosition")
                 CharacterGiveSkill(target, "Shout_FollowerKeepPosition")
             end
+            CharacterRemoveFromPlayerCharacter(char, owner)
         end
     elseif event == "GM_AssignPlayer" and target ~= nil then
         for char,x in pairs(selected) do
@@ -195,10 +197,11 @@ end
  
 function UGM_ApplyStatus(status, duration)
     if duration ~= -1 then duration = duration * 6.0 end
-    for char,x in pairs(selected) do
-        ApplyStatus(char, string.upper(status), duration, 1)
-    end
-    if not NRD_StatExists(string.upper(status)) then
+    if NRD_StatExists(string.upper(status)) then
+        for char,x in pairs(selected) do
+            ApplyStatus(char, string.upper(status), duration, 1)
+        end
+    else
         print("This status does not exists !")
     end
 end

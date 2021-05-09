@@ -14,4 +14,3 @@ type "Potion"
 new entry "stats_LX_KeepPosition"
 type "Potion"
 data "MovementSpeedBoost" "-300"
-
