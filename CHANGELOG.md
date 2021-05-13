@@ -1,5 +1,11 @@
 GM Tools : Ultimate GM Toolbox Changelog
 
+# 0.11.10.19
+New
+* Included an experimental fix for LoseControl statuses when the GM is possessing the characters
+* Included a new tool to randomize visual sets
+* Included a new tool to fade the screens of the players (still lack some feedback, will work on it in the future)
+
 # 0.10.9.16
 New
 * Included a new tool to remove (destroyed) items
