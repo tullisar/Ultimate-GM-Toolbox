@@ -23,11 +23,13 @@ bypasslock = false
 currentLevel = ""
 
 local function RestoreCharactersScaling()
-    for character, scale in pairs(PersistentVars[currentLevel].scale) do
-        if ObjectExists(character) == 1 and ObjectIsCharacter(character) == 1 then
-            Ext.BroadcastMessage("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(scale), nil)
-        else
-            PersistentVars[currentLevel].scale[character] = nil
+    if (PersistentVars[currentLevel] and PersistentVars[currentLevel].scale) then
+        for character, scale in pairs(PersistentVars[currentLevel].scale) do
+            if ObjectExists(character) == 1 and ObjectIsCharacter(character) == 1 then
+                Ext.BroadcastMessage("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(scale), nil)
+            else
+                PersistentVars[currentLevel].scale[character] = nil
+            end
         end
     end
 end

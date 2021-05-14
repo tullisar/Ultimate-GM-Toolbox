@@ -35,23 +35,19 @@ end
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", AddToSelection)
 
 local function RegisterSelection(char, status, causee)
-    if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
+    if (char ~= nil) and (status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET") then
         selected[char] = status
-        if status == "GM_SELECTED_DISCREET" then
-            print("Selected "..Ext.GetCharacter(char).DisplayName)
-        end
+        Ext.Print("Selected "..Ext.GetCharacter(char).DisplayName)
     end
 end
 
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "after", RegisterSelection)
 
 local function RemoveFromSelection(char, status, ...)
-    if status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET" then
+    if (char ~= nil) and (status == "GM_SELECTED" or status == "GM_SELECTED_DISCREET") then
         if quickSelection == nil then quickSelection = "" end
         selected[char] = nil
-        if status == "GM_SELECTED_DISCREET" and char ~= nil then
-            print("Unselected "..Ext.GetCharacter(char).DisplayName)
-        end
+        Ext.Print("Unselected "..Ext.GetCharacter(char).DisplayName)
         if PersistentVars.lock or quickSelection == GetUUID(char) then
             if bypasslock then bypasslock = false; return end
             ApplyStatus(char, status, -1.0, 1)
